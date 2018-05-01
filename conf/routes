@@ -1,0 +1,61 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Import CRUD routes
+*       /myadmin                                    module:crud
+
+
+# Home page
+
+GET     /                                     Application.index
+GET     /loginchoice                          Application.logindex
+POST    /register                             Application.registration
+
+
+#Donor Login Page
+
+GET     /donorlogin                           DonApp.loginindex
+POST    /login                                DonApp.login
+GET     /home                                 DonApp.home
+GET     /logout                               DonApp.logout
+GET     /DonAct                               DonApp.perform
+GET     /DonorProfile                         DonApp.donorprofile
+
+#Institute Login Page
+GET     /institutlogin                        InsLogin.instituteindex
+POST    /Login                                InsLogin.login
+GET     /institutehome                        InsApp.InsHome
+GET     /Inslogout                            InsApp.ilogout
+GET     /Processing                           InsApp.perform
+POST    /registerDonor                        InsApp.registration
+GET     /newdonation                          InsApp.newDonation
+GET     /viewdonorinfo                        InsApp.viewDonor
+GET     /donationProcess                      InsApp.donationProcess
+
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+
+#AndroidApp Routes
+GET     /AppLogin                             AppController.loginCheck
+POST    /AppLogin                             AppController.loginCheck
+
+GET     /AppDonorProfile                      AppController.ProfileFinder
+POST    /AppDonorProfile                      AppController.ProfileFinder
+
+GET     /AppFindDonors                        AppController.DonorInfo
+POST    /AppFindDonors                        AppController.DonorInfo
+
+GET     /AppFindInst                          AppController.InstInfo
+POST    /AppFindInst                          AppController.InstInfo
+
+GET     /AppViewInst                          AppController.InstDetail
+POST    /AppViewInst                          AppController.InstDetail
+
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+
+

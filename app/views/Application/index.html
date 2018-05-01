@@ -1,0 +1,9 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+*{#{welcome /}}*
+
+<form action="@{Application.logindex()}" method="get">
+    <input type="submit" name="login" value="DLogin">
+    <input type="submit" name="login" value="ILogin">
+</form>

@@ -1,0 +1,24 @@
+#{extends 'main.html'   /}
+
+#{set header:'New Donation Details' /}
+<form action="@{InsApp.donationProcess()}" method="GET" >
+
+    Donor ID:<input type="text" name="d_id" value="" placeholder="Enter Donor Id"/><br><br>
+
+    <input type="hidden" name="in_id" value="${in_id}"/>
+    <input type="hidden" name="in_name" value="${in_name}"/>
+    <input type="hidden" name="in_incharge" value="${in_incharge}"/>
+    <input type="hidden" name="in_city" value="${in_city}"/>
+    Institute ID:${in_id}<br><br>
+    Institute Name:${in_name}<br><br>
+    Institute Incharge:${in_incharge}<br><br>
+    #{if success}
+        <p style="color:green;"> Donation Registered Successfully...</p>
+    #{/if}
+    #{ if flash.error}
+        <p style="color:red;"> ${flash.error}</p>
+    #{/if}
+    <input type="submit" name="send" value="Add Donation">
+</form>
+
+<a href="/institutehome?in_name=${in_name}&in_city=${in_city}&in_incharge=${in_incharge}&in_id=${in_id}" >Back To Home Page</a>

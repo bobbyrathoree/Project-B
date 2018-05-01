@@ -1,0 +1,49 @@
+#{extends 'main.html'   /}
+#{set header:'View Donor Information' /}
+
+<form action="@{InsApp.viewDonor()}" method="GET">
+Enter Donor ID:
+<input type="text" name="d_id" value="" placeholder="Donor ID"/>
+    <input type="hidden" name="in_id" value="${in_id}"/>
+    <input type="hidden" name="in_name" value="${in_name}"/>
+    <input type="hidden" name="in_incharge" value="${in_incharge}"/>
+    <input type="hidden" name="in_city" value="${in_city}"/>
+    <input type="submit" name="send" value="Submit"/>
+</form>
+
+#{list items:list, as:'list'}
+<table border="1">
+    <tr>
+        <th>ID </th>
+        <th>Name </th>
+        <th>Email</th>
+        <th>Age</th>
+        <th>City</th>
+        <th>Gender </th>
+    </tr>
+    <tr>
+        <td>${list?.d_id} </td>
+        <td>${list?.d_fname} ${list?.d_lname} </td>
+        <td>${list?.d_email} </td>
+        <td>${list?.d_age} </td>
+        <td>${list?.d_city} </td>
+        <td>${list?.d_gender} </td>
+
+
+    </tr>
+</table>
+
+
+
+#{/list}
+
+
+#{if !d_id}
+#{if flash.error}
+<p style="color:#c00">
+    ${flash.error}
+</p>
+#{/if}
+#{/if}
+
+<a href="/institutehome?in_name=${in_name}&in_city=${in_city}&in_incharge=${in_incharge}&in_id=${in_id}" >Back To Home Page</a>

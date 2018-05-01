@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+#{ifErrors }
+<p style="color:#c;">
+<h1>Oops...!!!</h1>
+</p>
+#{/ifErrors}
+
+<form action="@{InsLogin.login()}" method="POST">
+    <div>
+        <input type="text" name="in_id" value="${flash['in_id']}"/>
+        #{error 'in_id' /}
+    </div>
+
+    <div>
+        <input type="text" name="in_incharge" value="${flash['in_incharge']}"/>
+        #{error 'in_incharge' /}
+    </div>
+
+    <div>
+        <input type="submit" name="send" value="Login"/>
+    </div>
+
+    #{if flash.error}
+    <p style="color:#c00;">
+        ${flash.error}
+    </p>
+    #{/if}
+</form>
+<a href="/">Back to Login Choice</a>

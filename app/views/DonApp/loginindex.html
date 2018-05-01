@@ -1,0 +1,31 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+#{ifErrors }
+<p style="color:#c00;">
+    <h1>Oops...!!!</h1>
+</p>
+#{/ifErrors}
+
+<form action="@{DonApp.login()}" method="POST">
+    <div>
+        <input type="email" name="d_email" value="${flash['d_email']}"/>
+        #{error 'd_email' /}
+    </div>
+
+    <div>
+        <input type="password" name="d_pass" value="${flash['d_pass']}"/>
+        #{error 'd_pass' /}
+    </div>
+
+    <div>
+        <input type="submit" name="send" value="Login"/>
+    </div>
+
+    #{if flash.error}
+    <p style="color:#c00;">
+        ${flash.error}
+    </p>
+    #{/if}
+</form>
+<a href="/">Back to Login Choice</a>

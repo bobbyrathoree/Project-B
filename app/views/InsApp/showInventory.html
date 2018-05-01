@@ -1,0 +1,40 @@
+#{extends 'main.html'   /}
+
+#{set header:in_name /}
+
+#{list items:insInfo, as:'ins'}
+
+<h3>Institute ID: ${in_id}</h3>
+<table border="1">
+    <tr>
+        <th>A+ </th>
+        <th>A- </th>
+        <th>B+</th>
+        <th>B-</th>
+        <th>AB+</th>
+        <th>AB-</th>
+        <th>O+</th>
+        <th>O-</th>
+
+    </tr>
+    <tr>
+
+        <td>${ins?.A_Plus} </td>
+        <td>${ins?.A_Minus} </td>
+        <td>${ins?.B_Plus} </td>
+        <td>${ins?.B_Minus} </td>
+        <td>${ins?.AB_Minus} </td>
+        <td>${ins?.AB_Plus} </td>
+        <td>${ins?.O_Plus} </td>
+        <td>${ins?.O_Minus} </td>
+
+
+
+    </tr>
+</table>
+
+
+
+#{/list}
+
+<a href="/institutehome?in_name=${in_name}&in_city=${in_city}&in_incharge=${in_incharge}&in_id=${in_id}" >Back To Home Page</a>

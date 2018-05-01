@@ -1,0 +1,38 @@
+#{extends 'main.html'   /}
+#{set title:'Home'  /}
+#{list items:donor, as:'donor'}
+#{set header:donor?.d_fname.toString()+' '+donor?.d_lname.toString() /}
+#{set id:d_id /}
+
+<h1><center>Welcome ${donor?.d_id.toString()},${donor?.d_email.toString()}</center></h1>
+<center>
+
+    <h4>ID : ${donor?.d_id}<br><br>
+    Name : ${donor?.d_fname} ${donor?.d_lname}<br><br>
+    Email : ${donor?.d_email}<br><br>
+    Age :  ${donor?.d_age}<br><br>
+    City :  ${donor?.d_city}<br><br>
+        Gender : ${donor?.d_gender}<br><br>
+        Units Donated : ${donor?.d_units_donated}<br><br>
+        Units Received : ${donor?.d_units_received}<br><br>
+        Last  Donation Date : ${donor?.d_last_donate}<br><br>
+        Next Donation Date : ${donor?.d_next_donate}<br><br></h4>
+
+
+
+
+
+
+
+
+
+
+
+    <form action="@{DonApp.logout()}" method="get">
+    <input type="submit" name="logout" value="Logout">
+
+
+
+</form></center>
+
+#{/list}

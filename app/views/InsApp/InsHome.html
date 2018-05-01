@@ -1,0 +1,21 @@
+#{extends 'main.html' /}
+#{set title:'Institute Home' /}
+#{set header:in_name+','+in_city /}
+<h1>
+    <Center>
+        <form action="@{InsApp.perform()}" method="get">
+            <input type="hidden" name="in_id" value="${in_id}">
+            <input type="hidden" name="in_incharge" value="${in_incharge}">
+            <input type="hidden" name="in_name" value="${in_name}">
+            <input type="hidden" name="in_city" value="${in_city}">
+            <input type="submit" name="choice" value="View Blood Bank Inventory"><br><br>
+            <input type="submit" name="choice" value="Register New Donor"><br><br>
+            <input type="submit" name="choice" value="View Donor Infomation"><br><br>
+            <input type="submit" name="choice" value="Enter Donation Details"><br><br>
+           <!-- <input type="submit" name="choice" value="Enter Blood Consumption Details">-->
+        </form>
+    </Center>
+</h1>
+<form action="@{InsApp.ilogout()}" method="get">
+    <input type="submit" name="logout" value="Logout">
+</form>

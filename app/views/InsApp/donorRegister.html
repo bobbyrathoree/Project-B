@@ -1,0 +1,101 @@
+#{extends 'main.html'   /}
+
+#{set title:'Donor Registration'    /}
+#{set header:'Donor Registration'    /}
+#{ifErrors }
+<p style="color:#c00;">
+<h1>Oops...!!!</h1>
+</p>
+#{/ifErrors}
+
+
+<div id="content">
+    <form action="@{InsApp.registration()}" method="post">
+        <input type="hidden" name="in_id" value="${in_id}">
+        <input type="hidden" name="in_incharge" value="${in_incahrge}">
+        <input type="hidden" name="in_name" value="${in_name}">
+        <input type="hidden" name="in_city" value="${in_city}">
+        <table>
+            <tr>
+                <td>Enter First Name:</td>
+                <td><input type="text" name="donor.d_fname" value="${flash['donor.d_fname']}">
+                    #{error 'donor.d_fname' /} </td>
+            </tr>
+            <tr>
+                <td>Enter Last Name:</td>
+                <td><input type="text" name="donor.d_lname" value="${flash['donor.d_lname']}"> #{error 'donor.d_lname' /} </td>
+            </tr>
+            <tr>
+                <td>Enter Blood Group:</td>
+                <td><select name="donor.d_bgrp" value="${flash['donor.d_bgrp']}"> #{error 'donor.d_bgrp' /}
+                    <OPTION VALUE="A+">A+</OPTION>
+                    <OPTION VALUE="A+">A-</OPTION>
+                    <OPTION VALUE="A+">B+</OPTION>
+                    <OPTION VALUE="A+">B-</OPTION>
+                    <OPTION VALUE="A+">AB+</OPTION>
+                    <OPTION VALUE="A+">AB-</OPTION>
+                    <OPTION VALUE="A+">O+</OPTION>
+                    <OPTION VALUE="A+">O-</OPTION>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Enter City:</td>
+                <td><input type="text" name="donor.d_city" value="${flash['donor.d_city']}">  #{error 'donor.d_city' /}</td>
+            </tr>
+            <tr>
+                <td>Enter Age:</td>
+                <td><input type="number" name="donor.d_age" value="${flash['donor.d_age']}">  #{error 'donor.d_age' /}</td>
+            </tr>
+            <tr>
+                <td>Enter Gender:</td>
+                <td><input type="radio" name="donor.d_gender" value="male" value="${flash['donor.d_gender']}">male
+                    <input type="radio" name="donor.d_gender" value="female">female #{error 'donor.d_gender' /}</td>
+            </tr>
+            <tr>
+                <td>Enter Mobile No :</td>
+                <td><input type="text" name="donor.d_mob_no" value="${flash['donor.d_mob_no']}">  #{error 'donor.d_mob_no' /}</td>
+            </tr>
+            <tr>
+                <td>Enter Email :</td>
+                <td><input type="text" name="donor.d_email" value="${flash['donor.']}" >  #{error 'donor.d_email' /}</td>
+            </tr>
+            <tr>
+                <td>Enter No of units donated:</td>
+                <td><input type="number" name="donor.d_units_donated" value="${flash['donor.d_units_donated']}">  #{error 'donor.d_units_donated' /}</td>
+            </tr>
+            <tr>
+                <td>Enter No of units received:</td>
+                <td><input type="number" name="donor.d_units_received" value="${flash['donor.d_units_received']}">  #{error 'donor.d_units_received' /}</td>
+            </tr>
+            <tr>
+                <td>Enter Last Donation date</td>
+                <td><input type="date" name="donor.d_last_donate" value="${flash['donor.d_last_donate']}"> #{error 'donor.d_last_donate' /} </td>
+            </tr>
+            <tr>
+                <td>Enter next donation date:</td>
+                <td><input type="date" name="donor.d_next_donate" value="${flash['donor.d_next_donate']}"> #{error 'donor.d_next_donate' /} </td>
+            </tr>
+            <tr>
+                <td rowspan="2">
+                    <input type="submit" name="send" value="Submit">
+                </td>
+            </tr>
+
+        </table>
+    </form>
+    #{if flash.error}
+    <p style="color:#c00">
+        ${flash.error}
+    </p>
+    #{/if}
+</div>
+
+
+#{if success}
+<h3>Donor Registered Successfully</h3>
+
+#{/if}
+
+
+<a href="/institutehome?in_name=${in_name}&in_city=${in_city}&in_incharge=${in_incharge}&in_id=${in_id}" >Back To Home Page</a>
